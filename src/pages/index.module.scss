@@ -1,0 +1,19 @@
+.banner {
+  height: 25vh;
+  background-color: #0265a1;
+  margin: -20px 0 0;
+  padding: 16px 24px;
+  h1 {
+    color: white;
+  }
+  p {
+    color: white;
+  }
+}
+
+.cardWrapper {
+  display: inline-block;
+  width: 25%;
+  min-width: 200px;
+  padding: 8px;
+}
