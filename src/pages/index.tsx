@@ -1,7 +1,20 @@
 import styles from "@/pages/index.module.scss";
 import PostCard from "@/components/PostCard";
+import { getPostsData } from "@/lib/getPosts";
 
-export default function Home() {
+type TPostsData = {
+  id: string;
+  content: string;
+  data: Record<string, string>;
+};
+
+type TPost = {
+  serializedPosts: TPostsData[];
+};
+
+export default function Home({ serializedPosts }: TPost) {
+  // console.log(serializedPosts);
+
   return (
     <>
       <div>
@@ -11,18 +24,40 @@ export default function Home() {
         </div>
         <h2>Newest Posts</h2>
         <div>
-          {new Array(4).fill(null).map((_, index) => (
-            <div key={index} className={styles.cardWrapper}>
-              <PostCard
-                url="/test"
-                thumbnail="/blog-images/default.jpeg"
-                title={`Post ${index + 1}`}
-                summary={`Summary ${index + 1}`}
-              />
-            </div>
-          ))}
+          {serializedPosts.map(
+            ({ id, data: { title, date, summary, image } }) => (
+              <div key={id} className={styles.cardWrapper}>
+                <PostCard
+                  url={`/posts/${id}`}
+                  date={date}
+                  thumbnail={image}
+                  title={title}
+                  summary={summary}
+                />
+              </div>
+            )
+          )}
         </div>
       </div>
     </>
   );
+}
+
+export function getStaticProps() {
+  const postsData = getPostsData({ limit: 4 });
+
+  // console.log("STATIC PROPS CALLED");
+  // console.log("Posts data results: ", postsData);
+
+  const serializedPosts = postsData.map(({ id, data }) => {
+    return {
+      id,
+      data,
+    };
+  });
+  return {
+    props: {
+      serializedPosts,
+    },
+  };
 }

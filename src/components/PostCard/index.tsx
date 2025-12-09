@@ -7,25 +7,29 @@ interface TPostCardProps {
   summary: string;
   thumbnail?: string;
   url: string;
+  date?: string;
 }
 
-const PostCard = ({ title, summary, thumbnail, url }: TPostCardProps) => {
+const PostCard = ({ title, summary, thumbnail, url, date }: TPostCardProps) => {
   return (
     <section className={styles.container} data-no-image={!thumbnail}>
       <Link href={url}>
         {thumbnail && (
-          <div className={styles.imageWrapper}>
-            <Image
-              src={thumbnail}
-              fill
-              quality={`100`}
-              alt={title}
-              style={{
-                objectFit: "cover",
-              }}
-            />
-          </div>
+          <>
+            <div className={styles.imageWrapper}>
+              <Image
+                src={thumbnail}
+                fill
+                quality={`10`}
+                alt={title}
+                style={{
+                  objectFit: "cover",
+                }}
+              />
+            </div>
+          </>
         )}
+        <p className={styles.date}>{date}</p>
         <h3>{title}</h3>
         <p>{summary}</p>
       </Link>
