@@ -14,6 +14,7 @@ export default function Home() {
           {new Array(4).fill(null).map((_, index) => (
             <div key={index} className={styles.cardWrapper}>
               <PostCard
+                url="/test"
                 thumbnail="/blog-images/default.jpeg"
                 title={`Post ${index + 1}`}
                 summary={`Summary ${index + 1}`}
