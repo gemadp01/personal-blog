@@ -4,7 +4,9 @@
   padding: 16px 24px;
   height: 30vh;
   position: relative;
-
+  // display: flex;
+  // align-items: center;
+  // overflow: hidden;
   h1 {
     color: white;
   }
@@ -28,8 +30,12 @@
   color: lightblue;
 }
 
-.cardWrapper {
-  display: inline-block;
-  width: 25%;
-  padding: 8px;
+.contentWrapper {
+  margin-top: 24px;
 }
+
+// .cardWrapper {
+//   display: inline-block;
+//   width: 25%;
+//   padding: 8px;
+// }

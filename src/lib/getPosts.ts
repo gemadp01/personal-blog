@@ -2,21 +2,11 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-// type TPostData = {
-//   data: Record<string, unknown>;
-//   content: string;
-//   excerpt?: string | undefined;
-//   orig: string | Buffer<ArrayBufferLike>;
-//   language: string;
-//   matter: string;
-//   stringify(lang: string): string;
-//   id: string;
-// };
-
 const postDirectory = path.join(process.cwd(), "posts"); // root/posts
 
 export const getPostsData = ({ limit = 0 }) => {
   const fileNames = fs.readdirSync(postDirectory);
+  // console.log(postDirectory); // C:\Users\gemad\WebApps\personal-blog\posts
 
   // console.log(fileNames); // [ 'post-0.md', 'post-1.md' ]
 

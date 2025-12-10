@@ -20,7 +20,7 @@ const PostCard = ({ title, summary, thumbnail, url, date }: TPostCardProps) => {
               <Image
                 src={thumbnail}
                 fill
-                quality={`10`}
+                quality={`25`}
                 alt={title}
                 style={{
                   objectFit: "cover",
