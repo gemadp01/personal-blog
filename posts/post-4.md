@@ -3,6 +3,7 @@ title: "Hello everyone this is my fifth post!"
 date: "2020-01-01"
 summary: "this is my fifth blog post"
 image: "/blog-images/default.jpeg"
+deprecated: true
 ---
 
 Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page.

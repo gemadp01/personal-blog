@@ -1,11 +1,11 @@
 import { getPostsData } from "@/lib/getPosts";
 import styles from "./index.module.scss";
-
 import Image from "next/image";
 import { getPostDetail } from "@/lib/getPostsDetail";
 import { GetStaticPropsContext } from "next";
 import Markdown from "markdown-to-jsx";
 import type { TPostData } from "@/types/postData";
+import { notFound } from "next/navigation";
 
 export default function PostPage(props: TPostData) {
   const { content } = props;
@@ -38,14 +38,13 @@ export default function PostPage(props: TPostData) {
 export function getStaticProps(context: GetStaticPropsContext) {
   const { id } = context.params as { id: string };
 
-  console.log(id);
-
   if (!id) return { notFound: true };
 
   const post = getPostDetail(id);
 
   return {
     props: post,
+    notFound: post.data.deprecated ? true : false,
   };
 }
 

@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 80vh;
+  button {
+    width: 300px;
+    height: 40px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    background-color: var(--primaryColor);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--primaryColorDark);
+    }
+  }
+}
