@@ -2,7 +2,7 @@ import styles from "./index.module.scss";
 
 import Image from "next/image";
 import Link from "next/link";
-import PostCard from "@/components/PostCard";
+import Card from "@/components/Card";
 
 export type TGithubRepo = {
   id: number;
@@ -44,7 +44,7 @@ export default function GithubProjectsPage(props: TGithubProjectProps) {
       <div>
         {repos.map(({ id, name, description, html_url, created_at }) => (
           <div key={id} className={styles.cardWrapper}>
-            <PostCard
+            <Card
               date={new Date(created_at).toLocaleString()}
               url={html_url}
               title={name}

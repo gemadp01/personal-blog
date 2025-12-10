@@ -1,7 +1,29 @@
+import { getPostsData } from "@/lib/getPosts";
 import styles from "./index.module.scss";
-import PostCard from "@/components/PostCard";
+import Card from "@/components/Card";
+import type { TPostData } from "@/types/postData";
+import { useMemo, useState } from "react";
 
-export default function AllPosts() {
+type TPosts = {
+  serializedPosts: TPostData[];
+};
+
+export default function AllPosts({ serializedPosts }: TPosts) {
+  // console.log(serializedPosts);
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
+
+  const filteredPostsData = useMemo(() => {
+    if (!searchValue) return serializedPosts;
+    const filteredPosts = serializedPosts.filter((post) =>
+      post.data.title.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    return filteredPosts;
+  }, [serializedPosts, searchValue]);
+
   return (
     <>
       <div className={styles.banner}>
@@ -11,22 +33,43 @@ export default function AllPosts() {
       <div>
         <div>
           <input
+            onChange={handleChange}
             className={styles.search}
             type="text"
             placeholder="Search blog posts title"
           />
         </div>
-        {new Array(12).fill(null).map((_, index) => (
-          <div key={index} className={styles.cardWrapper}>
-            <PostCard
-              url="/posts/123"
-              thumbnail="/blog-images/default.jpeg"
-              title={`Post ${index + 1}`}
-              summary={`Summary ${index + 1}`}
-            />
-          </div>
-        ))}
+        {filteredPostsData.map(
+          ({ id, data: { title, date, summary, image } }) => (
+            <div key={id} className={styles.cardWrapper}>
+              <Card
+                url={`/posts/${id}`}
+                date={date}
+                thumbnail={image}
+                title={title}
+                summary={summary}
+              />
+            </div>
+          )
+        )}
       </div>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const postsData = getPostsData({ limit: 0 });
+
+  const serializedPosts = postsData.map(({ id, data }) => {
+    return {
+      id,
+      data,
+    };
+  });
+
+  return {
+    props: {
+      serializedPosts,
+    },
+  };
 }

@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "./index.module.scss";
 import Link from "next/link";
 
-interface TPostCardProps {
+interface TCardProps {
   title: string;
   summary: string;
   thumbnail?: string;
@@ -10,7 +10,7 @@ interface TPostCardProps {
   date?: string;
 }
 
-const PostCard = ({ title, summary, thumbnail, url, date }: TPostCardProps) => {
+const Card = ({ title, summary, thumbnail, url, date }: TCardProps) => {
   return (
     <section className={styles.container} data-no-image={!thumbnail}>
       <Link href={url}>
@@ -37,4 +37,4 @@ const PostCard = ({ title, summary, thumbnail, url, date }: TPostCardProps) => {
   );
 };
 
-export default PostCard;
+export default Card;

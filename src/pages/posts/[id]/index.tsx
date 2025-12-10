@@ -5,11 +5,7 @@ import Image from "next/image";
 import { getPostDetail } from "@/lib/getPostsDetail";
 import { GetStaticPropsContext } from "next";
 import Markdown from "markdown-to-jsx";
-
-type TPostData = {
-  content: string;
-  data: Record<string, string>;
-};
+import type { TPostData } from "@/types/postData";
 
 export default function PostPage(props: TPostData) {
   const { content } = props;

@@ -1,18 +1,13 @@
 import styles from "@/pages/index.module.scss";
-import PostCard from "@/components/PostCard";
 import { getPostsData } from "@/lib/getPosts";
+import type { TPostData } from "@/types/postData";
+import Card from "@/components/Card";
 
-type TPostsData = {
-  id: string;
-  content: string;
-  data: Record<string, string>;
+type TPosts = {
+  serializedPosts: TPostData[];
 };
 
-type TPost = {
-  serializedPosts: TPostsData[];
-};
-
-export default function Home({ serializedPosts }: TPost) {
+export default function Home({ serializedPosts }: TPosts) {
   // console.log(serializedPosts);
 
   return (
@@ -31,7 +26,7 @@ export default function Home({ serializedPosts }: TPost) {
           {serializedPosts.map(
             ({ id, data: { title, date, summary, image } }) => (
               <div key={id} className={styles.cardWrapper}>
-                <PostCard
+                <Card
                   url={`/posts/${id}`}
                   date={date}
                   thumbnail={image}
@@ -48,7 +43,7 @@ export default function Home({ serializedPosts }: TPost) {
 }
 
 export function getStaticProps() {
-  const postsData = getPostsData({ limit: 4 });
+  const postsData = getPostsData({ limit: 2 });
 
   // console.log("STATIC PROPS CALLED");
   // console.log("Posts data results: ", postsData);
