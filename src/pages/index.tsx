@@ -19,7 +19,11 @@ export default function Home({ serializedPosts }: TPost) {
     <>
       <div>
         <div className={styles.banner}>
-          <h1>Hi there! Welcome to my Blog!</h1>
+          <h1>
+            Hi there! Welcome to my Blog!
+            {/* <br />
+            {process.env.NEXT_PUBLIC_API_HOST} */}
+          </h1>
           <p>This is a place to share my personal thoughts.</p>
         </div>
         <h2>Newest Posts</h2>
