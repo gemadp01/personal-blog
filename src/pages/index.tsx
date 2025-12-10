@@ -2,6 +2,8 @@ import styles from "@/pages/index.module.scss";
 import { getPostsData } from "@/lib/getPosts";
 import type { TPostData } from "@/types/postData";
 import Card from "@/components/Card";
+import ErrorBoundary from "@/components/ErrorBoundary";
+import { FallbackPostCard } from "@/components/Card/FallbackPostCard";
 
 type TPosts = {
   serializedPosts: TPostData[];
@@ -26,13 +28,15 @@ export default function Home({ serializedPosts }: TPosts) {
           {serializedPosts.map(
             ({ id, data: { title, date, summary, image } }) => (
               <div key={id} className={styles.cardWrapper}>
-                <Card
-                  url={`/posts/${id}`}
-                  date={date}
-                  thumbnail={image}
-                  title={title}
-                  summary={summary}
-                />
+                <ErrorBoundary fallback={<FallbackPostCard />} key={id}>
+                  <Card
+                    url={`/posts/${id}`}
+                    date={date}
+                    thumbnail={image}
+                    title={title}
+                    summary={summary}
+                  />
+                </ErrorBoundary>
               </div>
             )
           )}
