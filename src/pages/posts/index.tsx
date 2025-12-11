@@ -3,6 +3,7 @@ import styles from "./index.module.scss";
 import Card from "@/components/Card";
 import type { TPostData } from "@/types/postData";
 import { useMemo, useState } from "react";
+import Head from "next/head";
 
 type TPosts = {
   serializedPosts: TPostData[];
@@ -26,6 +27,12 @@ export default function AllPosts({ serializedPosts }: TPosts) {
 
   return (
     <>
+      <Head>
+        <title>Posts</title>
+        <meta name="description" content="Blog by gemadp" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className={styles.banner}>
         <h1>My Blog Posts</h1>
         <p>A list of all my past blog posts</p>

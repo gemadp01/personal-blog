@@ -5,13 +5,19 @@ import { getPostDetail } from "@/lib/getPostsDetail";
 import { GetStaticPropsContext } from "next";
 import Markdown from "markdown-to-jsx";
 import type { TPostData } from "@/types/postData";
-import { notFound } from "next/navigation";
+import Head from "next/head";
 
 export default function PostPage(props: TPostData) {
   const { content } = props;
   const { title, date, summary, image } = props.data;
   return (
     <>
+      <Head>
+        <title>{title} | Home</title>
+        <meta name="description" content={summary} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className={styles.banner}>
         <div className={styles.bannerOverlay}>
           <h1>{title}</h1>

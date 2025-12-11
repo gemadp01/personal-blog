@@ -4,6 +4,7 @@ import type { TPostData } from "@/types/postData";
 import Card from "@/components/Card";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { FallbackPostCard } from "@/components/Card/FallbackPostCard";
+import Head from "next/head";
 
 type TPosts = {
   serializedPosts: TPostData[];
@@ -14,6 +15,12 @@ export default function Home({ serializedPosts }: TPosts) {
 
   return (
     <>
+      <Head>
+        <title>Home</title>
+        <meta name="description" content="Blog by gemadp" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div>
         <div className={styles.banner}>
           <h1>
