@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import styles from "./index.module.scss";
 import Link from "next/link";
@@ -10,9 +8,17 @@ interface TCardProps {
   thumbnail?: string;
   url: string;
   date?: string;
+  base64image: string;
 }
 
-const Card = ({ title, summary, thumbnail, url, date }: TCardProps) => {
+const Card = ({
+  title,
+  summary,
+  thumbnail,
+  url,
+  date,
+  base64image,
+}: TCardProps) => {
   return (
     <section className={styles.container} data-no-image={!thumbnail}>
       <Link href={url}>
@@ -27,6 +33,8 @@ const Card = ({ title, summary, thumbnail, url, date }: TCardProps) => {
                 style={{
                   objectFit: "cover",
                 }}
+                placeholder="blur"
+                blurDataURL={base64image}
               />
             </div>
           </>
