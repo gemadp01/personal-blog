@@ -13,10 +13,8 @@ export default function PostPage(props: TPostData) {
   return (
     <>
       <Head>
-        <title>{title} | Home</title>
+        <title>{title} | Post</title>
         <meta name="description" content={summary} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.banner}>
         <div className={styles.bannerOverlay}>

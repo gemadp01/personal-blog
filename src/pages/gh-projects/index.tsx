@@ -1,8 +1,8 @@
 import styles from "./index.module.scss";
-
 import Image from "next/image";
 import Link from "next/link";
-import Card from "@/components/Card";
+import Head from "next/head";
+import dynamic from "next/dynamic";
 
 export type TGithubRepo = {
   id: number;
@@ -16,11 +16,17 @@ export type TGithubProjectProps = {
   repos: TGithubRepo[];
 };
 
+const Card = dynamic(() => import("@/components/Card"), { ssr: false });
+
 export default function GithubProjectsPage(props: TGithubProjectProps) {
   // console.log(props);
   const { repos } = props;
   return (
     <>
+      <Head>
+        <title>Github Projects</title>
+        <meta name="description" content="Blog by gemadp" />
+      </Head>
       <div className={styles.banner}>
         <div className={styles.bannerOverlay}>
           <h1>Github Projects</h1>
@@ -45,7 +51,7 @@ export default function GithubProjectsPage(props: TGithubProjectProps) {
         {repos.map(({ id, name, description, html_url, created_at }) => (
           <div key={id} className={styles.cardWrapper}>
             <Card
-              date={new Date(created_at).toLocaleString()}
+              date={created_at}
               url={html_url}
               title={name}
               summary={description ?? "No description"}
@@ -58,7 +64,7 @@ export default function GithubProjectsPage(props: TGithubProjectProps) {
 }
 
 export async function getServerSideProps() {
-  console.log(process.env.BASE_GH_ENDPOINT);
+  // console.log(process.env.BASE_GH_ENDPOINT);
   const res = await fetch(`${process.env.BASE_GH_ENDPOINT}/gemadp01/repos`);
 
   const data = await res.json();

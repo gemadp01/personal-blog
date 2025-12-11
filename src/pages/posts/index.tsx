@@ -30,8 +30,6 @@ export default function AllPosts({ serializedPosts }: TPosts) {
       <Head>
         <title>Posts</title>
         <meta name="description" content="Blog by gemadp" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.banner}>
         <h1>My Blog Posts</h1>
