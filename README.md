@@ -1,40 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+## Project Overview
 
-## Getting Started
+This dummy project uses the Next.js Pages Router. The post data comes from markdown files using fs to read the files, path to resolve the folder routes, gray-matter to turn the markdown into a usable object, and markdown-to-jsx to render the markdown content into JSX through the Markdown component.
 
-First, run the development server:
+## Run Locally
+
+Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  git clone https://github.com/gemadp01/personal-blog.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Go to the project directory
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+  cd personal-blog
+```
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Copy .env from .env.example
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+```bash
+  cp .env.example .env
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Set your .env variable
 
-## Learn More
+```bash
+  GH_USERNAME=YOUR_GH_USERNAME
+```
 
-To learn more about Next.js, take a look at the following resources:
+Install dependencies
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+```bash
+  npm install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Start the client
 
-## Deploy on Vercel
+```bash
+  npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Folder Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+```
+.
+└── personal-blog/
+    ├── posts/
+    │   └── file.md
+    ├── public/
+    │   ├── blog-images/
+    │   │   └── static file
+    │   └── static file
+    ├── src/
+    │   ├── components/
+    │   ├── lib/
+    │   ├── pages/
+    │   ├── styles/
+    │   └── types/
+    ├── .env.example
+    ├── .env.production
+    ├── .gitignore
+    ├── package.json
+    └── readme.md
+```
+
+## Here to Contribute ✨
+
+Contributions are always welcome!
+
+## Authors
+
+- [@gemadp01](https://www.github.com/gemadp01)

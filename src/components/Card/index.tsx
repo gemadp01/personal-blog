@@ -8,7 +8,7 @@ interface TCardProps {
   thumbnail?: string;
   url: string;
   date?: string;
-  base64image: string;
+  base64image?: string;
 }
 
 const Card = ({

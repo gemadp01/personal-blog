@@ -65,7 +65,9 @@ export default function GithubProjectsPage(props: TGithubProjectProps) {
 
 export async function getServerSideProps() {
   // console.log(process.env.BASE_GH_ENDPOINT);
-  const res = await fetch(`${process.env.BASE_GH_ENDPOINT}/gemadp01/repos`);
+  const res = await fetch(
+    `${process.env.BASE_GH_ENDPOINT}/${process.env.GH_USERNAME}/repos`
+  );
 
   const data = await res.json();
 
